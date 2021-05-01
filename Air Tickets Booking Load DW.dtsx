@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{E9C3B0D5-D363-4784-8960-EAFA72D73F6D}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{80AEA139-3BC1-4E49-AE79-1EDB919D54A5}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -411,6 +411,2494 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Transform and Load AirLines Data"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F8C748EC-DD6F-4849-A0E1-2DA8D6504DBB}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transform and Load AirLines Data"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Transform and Load AirLines Data\Air Lines Contact Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Air Lines Contact Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Inputs[Sort Input].Columns[AirlineID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AirlineID"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[AirlineID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Inputs[Sort Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="Email"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[Email]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Inputs[Sort Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Phone"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[Phone]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Outputs[Sort Output].Columns[AirlineID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Outputs[Sort Output].Columns[AirlineID]"
+                      name="AirlineID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[AirlineID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Outputs[Sort Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Outputs[Sort Output].Columns[Email]"
+                      name="Email"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[Email]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Outputs[Sort Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Outputs[Sort Output].Columns[Phone]"
+                      name="Phone"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[Phone]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\Air Lines SCD"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Air Lines SCD"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [AirLineRatingStars], [Alternate_AirLineId], [ComanyName], [Country], [Email], [HeadOffice], [modifiedDate], [Phone],[StartDate],[EndDate] FROM [dbo].[dimAirLines]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere">[StartDate] IS NOT NULL AND [EndDate] IS NULL</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and Load AirLines Data\Air Lines SCD.Connections[LookupConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].Columns[AirLineRatingStars]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineRatingStars"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[AirLineRatingStars]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineRatingStars]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].Columns[ComanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ComanyName"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[ComanyName]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[ComanyName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Country]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Country]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Email]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Email]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].Columns[HeadOffice]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="HeadOffice"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[HeadOffice]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[HeadOffice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].Columns[modifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="modifiedDate"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[modifiedDate]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[modifiedDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Phone]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Phone]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].Columns[AirLineId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineId"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Alternate_AirLineId]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[AirLineRatingStars]"
+                      dataType="wstr"
+                      length="255"
+                      name="AirLineRatingStars" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Alternate_AirLineId]"
+                      dataType="wstr"
+                      length="255"
+                      name="Alternate_AirLineId" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[ComanyName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ComanyName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[HeadOffice]"
+                      dataType="wstr"
+                      length="255"
+                      name="HeadOffice" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[modifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="modifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[StartDate]"
+                      dataType="dbTimeStamp"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input].ExternalColumns[EndDate]"
+                      dataType="dbTimeStamp"
+                      name="EndDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Air Lines SCD.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Air Lines SCD.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Air Lines SCD.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Air Lines SCD.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Air Lines SCD.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Air Lines SCD.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\Air Lines Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Air Lines Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Air Lines Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Inputs[Sort Input].Columns[AirLineId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineId"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[AirLineId]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Inputs[Sort Input].Columns[ComanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ComanyName"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[ComanyName]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Inputs[Sort Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[Country]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Inputs[Sort Input].Columns[HeadOffice]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="HeadOffice"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[HeadOffice]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Inputs[Sort Input].Columns[AirLineRatingStars]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineRatingStars"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[AirLineRatingStars]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">5</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Inputs[Sort Input].Columns[modifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="modifiedDate"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[modifiedDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">6</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[AirLineId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[AirLineId]"
+                      name="AirLineId"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[AirLineId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[ComanyName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[ComanyName]"
+                      name="ComanyName"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[ComanyName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[Country]"
+                      name="Country"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[Country]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[HeadOffice]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[HeadOffice]"
+                      name="HeadOffice"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[HeadOffice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[AirLineRatingStars]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[AirLineRatingStars]"
+                      name="AirLineRatingStars"
+                      sortKeyPosition="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[AirLineRatingStars]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[modifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[modifiedDate]"
+                      name="modifiedDate"
+                      sortKeyPosition="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[modifiedDate]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Derived Column.Outputs[Derived Column Output].Columns[EndDate]"
+                      dataType="dbTimeStamp"
+                      description="EndDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transform and Load AirLines Data\Derived Column.Outputs[Derived Column Output].Columns[EndDate]"
+                      name="EndDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\Derived Column 1"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column 1"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Derived Column 1.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]"
+                      dataType="dbTimeStamp"
+                      description="StartDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]"
+                      name="StartDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBTIMESTAMP)(@[System::StartTime])</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Derived Column 1.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract Data from AirLines Staging"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stgAirLines]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_Stagging_DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_Stagging_DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[AirLineId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[AirLineId]"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[AirLineId]"
+                      name="AirLineId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[ComanyName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[ComanyName]"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[ComanyName]"
+                      name="ComanyName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[HeadOffice]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[HeadOffice]"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[HeadOffice]"
+                      name="HeadOffice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[AirLineRatingStars]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[AirLineRatingStars]"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[AirLineRatingStars]"
+                      name="AirLineRatingStars"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[modifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[modifiedDate]"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].Columns[modifiedDate]"
+                      name="modifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[AirLineId]"
+                      dataType="wstr"
+                      length="255"
+                      name="AirLineId" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[ComanyName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ComanyName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[HeadOffice]"
+                      dataType="wstr"
+                      length="255"
+                      name="HeadOffice" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[AirLineRatingStars]"
+                      dataType="wstr"
+                      length="255"
+                      name="AirLineRatingStars" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output].ExternalColumns[modifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="modifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[AirLineId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[AirLineId]"
+                      name="AirLineId" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[ComanyName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[ComanyName]"
+                      name="ComanyName" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[HeadOffice]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[HeadOffice]"
+                      name="HeadOffice" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[AirLineRatingStars]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[AirLineRatingStars]"
+                      name="AirLineRatingStars" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[modifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[modifiedDate]"
+                      name="modifiedDate" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Extract Data from AirLinesContact Staging"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stgAirLinesContact]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_Stagging_DB]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_Stagging_DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[AirlineID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].ExternalColumns[AirlineID]"
+                      length="50"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[AirlineID]"
+                      name="AirlineID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="70"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      length="50"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].ExternalColumns[AirlineID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="AirlineID" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Phone" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Error Output].Columns[AirlineID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Error Output].Columns[AirlineID]"
+                      name="AirlineID" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dimAirLines]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and Load AirLines Data\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[AirLineId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineId"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Alternate_AirLineId]"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineId]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[ComanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ComanyName"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ComanyName]"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[ComanyName]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[HeadOffice]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="HeadOffice"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadOffice]"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[HeadOffice]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[AirLineRatingStars]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineRatingStars"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AirLineRatingStars]"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineRatingStars]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[modifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="modifiedDate"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[modifiedDate]"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[modifiedDate]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[StartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="StartDate"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      lineageId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Airlines_SK]"
+                      dataType="i4"
+                      name="Airlines_SK" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Alternate_AirLineId]"
+                      dataType="wstr"
+                      length="255"
+                      name="Alternate_AirLineId" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ComanyName]"
+                      dataType="wstr"
+                      length="255"
+                      name="ComanyName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadOffice]"
+                      dataType="wstr"
+                      length="255"
+                      name="HeadOffice" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AirLineRatingStars]"
+                      dataType="wstr"
+                      length="255"
+                      name="AirLineRatingStars" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[srcmodifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="srcmodifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[insertDate]"
+                      dataType="dbTimeStamp"
+                      name="insertDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[modifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="modifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      dataType="dbTimeStamp"
+                      name="StartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      dataType="dbTimeStamp"
+                      name="EndDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\Merge Join"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+              name="Merge Join"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of join to perform."
+                  name="JoinType"
+                  typeConverter="JoinType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the number of columns in the ordering key."
+                  name="NumKeyColumns">1</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the null values are treated as equal values."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates the requested maximum buffers per input before blocking."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Left Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[AirLineId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[AirLineId]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[ComanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ComanyName"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[ComanyName]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[HeadOffice]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="HeadOffice"
+                      cachedSortKeyPosition="4"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[HeadOffice]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[AirLineRatingStars]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineRatingStars"
+                      cachedSortKeyPosition="5"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[AirLineRatingStars]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[modifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="modifiedDate"
+                      cachedSortKeyPosition="6"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output].Columns[modifiedDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Right Input]"
+                  hasSideEffects="true"
+                  name="Merge Join Right Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Right Input].Columns[AirlineID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="AirlineID"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Outputs[Sort Output].Columns[AirlineID]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Right Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="Email"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Outputs[Sort Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Right Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Phone"
+                      cachedSortKeyPosition="3"
+                      lineageId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Outputs[Sort Output].Columns[Phone]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output]"
+                  isSorted="true"
+                  name="Merge Join Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineId]"
+                      name="AirLineId"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[AirLineId]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[ComanyName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[ComanyName]"
+                      name="ComanyName">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[ComanyName]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Country]"
+                      name="Country">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[Country]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[HeadOffice]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[HeadOffice]"
+                      name="HeadOffice">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[HeadOffice]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineRatingStars]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineRatingStars]"
+                      name="AirLineRatingStars">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[AirLineRatingStars]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[modifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[modifiedDate]"
+                      name="modifiedDate">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input].Columns[modifiedDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Email]"
+                      name="Email">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Right Input].Columns[Email]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Phone]"
+                      name="Phone">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The input column associated with this output column"
+                          name="InputColumnID">#{Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Right Input].Columns[Phone]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[dimAirLines] SET [EndDate] = ?, ModifiedDate = GETDATE() WHERE [Alternate_AirLineId] = ? AND [EndDate] IS NULL
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and Load AirLines Data\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transform and Load AirLines Data\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command.Inputs[OLE DB Command Input].Columns[AirLineId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineId"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineId]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command.Inputs[OLE DB Command Input].Columns[EndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="EndDate"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Transform and Load AirLines Data\Derived Column.Outputs[Derived Column Output].Columns[EndDate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="dbTimeStamp"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\OLE DB Command 1"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command 1"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[dimAirLines] SET [ComanyName] = ?,[Country] = ?,[Email] = ?,[HeadOffice] = ?,[modifiedDate] = ?,[Phone] = ? WHERE [Alternate_AirLineId] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[AirLineId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineId"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineId]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[ComanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ComanyName"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[ComanyName]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[HeadOffice]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="HeadOffice"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[HeadOffice]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[modifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="modifiedDate"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[modifiedDate]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Phone]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      name="Param_2">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_3">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="dbTimeStamp"
+                      name="Param_4">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                      dataType="wstr"
+                      length="255"
+                      name="Param_6">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\OLE DB Command 1.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Replace NULL in Head Office and Derived Columns"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Inputs[Derived Column Input].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Inputs[Derived Column Input].Columns[HeadOffice]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="HeadOffice"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[HeadOffice]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[HeadOffice]},#{Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Country]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(HeadOffice,Country)</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Outputs[Derived Column Output].Columns[InsertDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Outputs[Derived Column Output].Columns[InsertDate]"
+                      name="InsertDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Outputs[Derived Column Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Outputs[Derived Column Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[GETDATE]()</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">GETDATE()</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load AirLines Data\Union All"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union All"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 1].Columns[AirLineId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 1].Columns[ComanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ComanyName"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[ComanyName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[ComanyName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 1].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Country]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Country]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 1].Columns[HeadOffice]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="HeadOffice"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[HeadOffice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[HeadOffice]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 1].Columns[AirLineRatingStars]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineRatingStars"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineRatingStars]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineRatingStars]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 1].Columns[modifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="modifiedDate"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[modifiedDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[modifiedDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 1].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="Email"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Email]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Email]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 1].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Phone"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Phone]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Phone]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 2].Columns[AirLineId]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineId"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineId]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineId]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 2].Columns[ComanyName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="ComanyName"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[ComanyName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[ComanyName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 2].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Country"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Country]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Country]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 2].Columns[HeadOffice]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="HeadOffice"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[HeadOffice]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[HeadOffice]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 2].Columns[AirLineRatingStars]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="AirLineRatingStars"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[AirLineRatingStars]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineRatingStars]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 2].Columns[modifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="modifiedDate"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[modifiedDate]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[modifiedDate]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 2].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="70"
+                      cachedName="Email"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Email]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Email]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 2].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Phone"
+                      lineageId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output].Columns[Phone]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Phone]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineId]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineId]"
+                      name="AirLineId" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[ComanyName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[ComanyName]"
+                      name="ComanyName" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Country]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[HeadOffice]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[HeadOffice]"
+                      name="HeadOffice" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineRatingStars]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineRatingStars]"
+                      name="AirLineRatingStars" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[modifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[modifiedDate]"
+                      name="modifiedDate" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="70"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Phone]"
+                      name="Phone" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[Changing Attribute Updates Output]"
+              endId="Package\Transform and Load AirLines Data\OLE DB Command 1.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\Transform and Load AirLines Data\Air Lines SCD.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[Derived Column Output]"
+              endId="Package\Transform and Load AirLines Data\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Derived Column Output"
+              startId="Package\Transform and Load AirLines Data\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[Derived Column Output1]"
+              endId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[Derived Column Output2]"
+              endId="Package\Transform and Load AirLines Data\Air Lines SCD.Inputs[Slowly Changing Dimension Input]"
+              name="Derived Column Output"
+              startId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[Historical Attribute Inserts Output]"
+              endId="Package\Transform and Load AirLines Data\Derived Column.Inputs[Derived Column Input]"
+              name="Historical Attribute Inserts Output"
+              startId="Package\Transform and Load AirLines Data\Air Lines SCD.Outputs[Historical Attribute Inserts Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[Merge Join Output]"
+              endId="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns.Inputs[Derived Column Input]"
+              name="Merge Join Output"
+              startId="Package\Transform and Load AirLines Data\Merge Join.Outputs[Merge Join Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[New Output]"
+              endId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 1]"
+              name="New Output"
+              startId="Package\Transform and Load AirLines Data\Air Lines SCD.Outputs[New Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[OLE DB Command Output]"
+              endId="Package\Transform and Load AirLines Data\Union All.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\Transform and Load AirLines Data\OLE DB Command.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[OLE DB Source Output]"
+              endId="Package\Transform and Load AirLines Data\Air Lines Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[OLE DB Source Output1]"
+              endId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[Sort Output]"
+              endId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Transform and Load AirLines Data\Air Lines Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[Sort Output1]"
+              endId="Package\Transform and Load AirLines Data\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Transform and Load AirLines Data\Air Lines Contact Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Transform and Load AirLines Data.Paths[Union All Output 1]"
+              endId="Package\Transform and Load AirLines Data\Derived Column 1.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Transform and Load Cabin Class Data"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -691,6 +3179,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Transform and Load Air Routes Data" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{EAC971F2-06B5-402F-85BB-557A1988DEEA}"
+      DTS:From="Package\Transform and Load Air Routes Data"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Transform and Load AirLines Data" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -703,7 +3199,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="256,42"
           Id="Package\Transform and Load Cabin Class Data"
@@ -726,6 +3222,32 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="239,42"
+          Id="Package\Transform and Load AirLines Data"
+          TopLeft="216,203" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="333,151">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52"
+              Start="0,0"
+              End="0,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -836,6 +3358,575 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transform and Load AirLines Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="241,42"
+          Id="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging"
+          TopLeft="5.49999999999994,5.5" />
+        <NodeLayout
+          Size="277,42"
+          Id="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging"
+          TopLeft="307.5,5.5" />
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Transform and Load AirLines Data\Air Lines Sort"
+          TopLeft="153,107.5" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Transform and Load AirLines Data\Air Lines Contact Sort"
+          TopLeft="355.5,107.5" />
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[OLE DB Source Output]"
+          TopLeft="126,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="98,60"
+              Start="0,0"
+              End="98,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="94,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="94,30"
+                    Point2="98,30"
+                    Point3="98,34" />
+                  <mssgle:LineSegment
+                    End="98,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[OLE DB Source Output1]"
+          TopLeft="446,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Transform and Load AirLines Data\Merge Join"
+          TopLeft="381,209.5" />
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[Sort Output]"
+          TopLeft="224,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="201.666666666667,60"
+              Start="0,0"
+              End="201.666666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5623100303951"
+                    Point2="0,35.5623100303951"
+                    Point3="4,35.5623100303951" />
+                  <mssgle:LineSegment
+                    End="197.666666666667,35.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="197.666666666667,35.5623100303951"
+                    Point2="201.666666666667,35.5623100303951"
+                    Point3="201.666666666667,39.5623100303951" />
+                  <mssgle:LineSegment
+                    End="201.666666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[Sort Output1]"
+          TopLeft="446,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.3333333333333,60"
+              Start="0,0"
+              End="20.3333333333333,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5623100303951"
+                    Point2="0,35.5623100303951"
+                    Point3="4,35.5623100303951" />
+                  <mssgle:LineSegment
+                    End="16.3333333333333,35.5623100303951" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.3333333333333,35.5623100303951"
+                    Point2="20.3333333333333,35.5623100303951"
+                    Point3="20.3333333333333,39.5623100303951" />
+                  <mssgle:LineSegment
+                    End="20.3333333333333,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="142,42"
+          Id="Package\Transform and Load AirLines Data\Air Lines SCD"
+          TopLeft="368,387.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Transform and Load AirLines Data\Derived Column"
+          TopLeft="224,489.5" />
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[Historical Attribute Inserts Output]"
+          TopLeft="405.5,429.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-104.5,60"
+              Start="0,0"
+              End="-104.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.7373271889401" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.7373271889401"
+                    Point2="0,20.7373271889401"
+                    Point3="-4,20.7373271889401" />
+                  <mssgle:LineSegment
+                    End="-100.5,20.7373271889401" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-100.5,20.7373271889401"
+                    Point2="-104.5,20.7373271889401"
+                    Point3="-104.5,24.7373271889401" />
+                  <mssgle:LineSegment
+                    End="-104.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-127.30638671875,25.7373271889401,150.1127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Transform and Load AirLines Data\OLE DB Command"
+          TopLeft="212,591.5" />
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[Derived Column Output]"
+          TopLeft="298,531.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Transform and Load AirLines Data\Union All"
+          TopLeft="378.5,693.5" />
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[New Output]"
+          TopLeft="439,429.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="18.8333333333333,264"
+              Start="0,0"
+              End="18.8333333333333,256.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,152.332789559543" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,152.332789559543"
+                    Point2="0,156.332789559543"
+                    Point3="4,156.332789559543" />
+                  <mssgle:LineSegment
+                    End="14.8333333333333,156.332789559543" />
+                  <mssgle:CubicBezierSegment
+                    Point1="14.8333333333333,156.332789559543"
+                    Point2="18.8333333333333,156.332789559543"
+                    Point3="18.8333333333333,160.332789559543" />
+                  <mssgle:LineSegment
+                    End="18.8333333333333,256.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.6747200520833,161.332789559543,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[OLE DB Command Output]"
+          TopLeft="295,633.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="125.166666666667,60"
+              Start="0,0"
+              End="125.166666666667,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5301794453508" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.5301794453508"
+                    Point2="0,35.5301794453508"
+                    Point3="4,35.5301794453508" />
+                  <mssgle:LineSegment
+                    End="121.166666666667,35.5301794453508" />
+                  <mssgle:CubicBezierSegment
+                    Point1="121.166666666667,35.5301794453508"
+                    Point2="125.166666666667,35.5301794453508"
+                    Point3="125.166666666667,39.5301794453508" />
+                  <mssgle:LineSegment
+                    End="125.166666666667,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Transform and Load AirLines Data\Derived Column 1"
+          TopLeft="357.5,795.5" />
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[Union All Output 1]"
+          TopLeft="439,735.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Transform and Load AirLines Data\Insert Destination"
+          TopLeft="357.5,897.5" />
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[Derived Column Output1]"
+          TopLeft="439,837.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="175,42"
+          Id="Package\Transform and Load AirLines Data\OLE DB Command 1"
+          TopLeft="500.5,489.5" />
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[Changing Attribute Updates Output]"
+          TopLeft="472.5,429.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="115.5,60"
+              Start="0,0"
+              End="115.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.7373271889401" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.7373271889401"
+                    Point2="0,20.7373271889401"
+                    Point3="4,20.7373271889401" />
+                  <mssgle:LineSegment
+                    End="111.5,20.7373271889401" />
+                  <mssgle:CubicBezierSegment
+                    Point1="111.5,20.7373271889401"
+                    Point2="115.5,20.7373271889401"
+                    Point3="115.5,24.7373271889401" />
+                  <mssgle:LineSegment
+                    End="115.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-20.78390625,25.7373271889401,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="317,42"
+          Id="Package\Transform and Load AirLines Data\Replace NULL in Head Office and Derived Columns"
+          TopLeft="272,292" />
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[Merge Join Output]"
+          TopLeft="446,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15.5,40.5"
+              Start="0,0"
+              End="-15.5,33">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.25"
+                    Point2="0,20.25"
+                    Point3="-4,20.25" />
+                  <mssgle:LineSegment
+                    End="-11.5,20.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11.5,20.25"
+                    Point2="-15.5,20.25"
+                    Point3="-15.5,24.25" />
+                  <mssgle:LineSegment
+                    End="-15.5,33" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load AirLines Data.Paths[Derived Column Output2]"
+          TopLeft="430.5,334">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.5,53.5"
+              Start="0,0"
+              End="8.5,46">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.75"
+                    Point2="0,26.75"
+                    Point3="4,26.75" />
+                  <mssgle:LineSegment
+                    End="4.5,26.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.5,26.75"
+                    Point2="8.5,26.75"
+                    Point3="8.5,30.75" />
+                  <mssgle:LineSegment
+                    End="8.5,46" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and Load AirLines Data\Extract Data from AirLines Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and Load AirLines Data\Extract Data from AirLinesContact Staging">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and Load AirLines Data\Air Lines SCD">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionID&gt;{D335CCAB-1707-48B9-B527-1F369300D1E6}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[dimAirLines]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[AirLineRatingStars]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;AirLineRatingStars&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;HistoricalAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[AirLineId]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Alternate_AirLineId&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[ComanyName]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;ComanyName&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[Country]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Country&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[Email]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Email&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[HeadOffice]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;HeadOffice&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[modifiedDate]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;modifiedDate&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;Merge Join.Outputs[Merge Join Output].Columns[Phone]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;Phone&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Union All&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Derived Column 1&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command 1&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;true&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn&gt;StartDate&lt;/StartDateColumn&gt;
+  &lt;EndDateColumn&gt;EndDate&lt;/EndDateColumn&gt;
+  &lt;DateVariable&gt;System::StartTime&lt;/DateVariable&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
