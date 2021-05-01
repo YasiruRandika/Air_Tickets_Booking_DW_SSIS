@@ -11,15 +11,15 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="5"
-  DTS:VersionGUID="{9CDFD816-2EA2-46CD-B04F-2ADACD9B0CD2}">
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{D35D1635-7E4A-416D-85AE-7DB1EC021B21}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
       DTS:CreationName="EXCEL"
-      DTS:DTSID="{E65B976D-2988-4AE1-8958-EFAF1FFEFF9B}"
+      DTS:DTSID="{1F918419-E0D2-4ADF-BEA3-4D3F98A0D219}"
       DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
@@ -356,7 +356,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">CHECK_CONSTRAINTS</property>
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
@@ -425,27 +425,27 @@
                     <externalMetadataColumn
                       refId="Package\Extract AirLines Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AirLineId]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="AirLineId" />
                     <externalMetadataColumn
                       refId="Package\Extract AirLines Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ComanyName]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="ComanyName" />
                     <externalMetadataColumn
                       refId="Package\Extract AirLines Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="Country" />
                     <externalMetadataColumn
                       refId="Package\Extract AirLines Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadOffice]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="HeadOffice" />
                     <externalMetadataColumn
                       refId="Package\Extract AirLines Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AirLineRatingStars]"
                       dataType="wstr"
-                      length="50"
+                      length="255"
                       name="AirLineRatingStars" />
                     <externalMetadataColumn
                       refId="Package\Extract AirLines Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[modifiedDate]"
@@ -1005,10 +1005,10 @@
         <NodeLayout
           Size="171,42"
           Id="Package\Extract AirLines Data to Staging\OLE DB Destination"
-          TopLeft="191,163" />
+          TopLeft="188,163" />
         <EdgeLayout
           Id="Package\Extract AirLines Data to Staging.Paths[Excel Source Output]"
-          TopLeft="276.5,79">
+          TopLeft="275,79">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -1044,6 +1044,18 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package\Extract AirLines Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Extract AirLines Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
+          TopLeft="177,66" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <PipelineComponentMetadata
     design-time-name="Package\Extract AirLines Data to Staging\OLE DB Destination">
     <Properties>
@@ -1057,17 +1069,5 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package\Extract AirLines Data to Staging.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Extract AirLines Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
-          TopLeft="177,66" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
