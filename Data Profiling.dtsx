@@ -11,11 +11,22 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{C7464EDA-652B-4D33-8052-0F906E1CB6A5}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{A38AB943-B9CA-404A-A37F-73AE9E2390F2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Air Tickets Booking Data Profiling]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{95BB0B27-995A-4125-AD22-A1602D5F523E}"
+      DTS:ObjectName="Air Tickets Booking Data Profiling">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="1"
+          DTS:ConnectionString="Air Tickets Booking Data Profiling" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Data Profiling Test]"
       DTS:CreationName="FILE"

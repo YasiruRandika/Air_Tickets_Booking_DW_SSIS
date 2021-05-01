@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{19C3E696-2642-45C8-8B7C-365F07AFB65A}">
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{7D289FA4-4189-4FCC-8674-899F53B0433C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2815,30 +2815,30 @@
         <NodeLayout
           Size="215,42"
           Id="Package\Extract Air Routes to Staging"
-          TopLeft="194,314" />
+          TopLeft="192,334" />
         <NodeLayout
           Size="268,42"
           Id="Package\Extract AirLines Contact Data to Staging"
-          TopLeft="171,84" />
+          TopLeft="169,104" />
         <NodeLayout
           Size="228,42"
           Id="Package\Extract AirLines Data to Staging"
-          TopLeft="191,6" />
+          TopLeft="189,26" />
         <NodeLayout
           Size="245,42"
           Id="Package\Extract Cabin Class Data to Staging"
-          TopLeft="184,236" />
+          TopLeft="182,256" />
         <NodeLayout
           Size="218,42"
           Id="Package\Extract Flight Data to Staging"
-          TopLeft="198,162" />
+          TopLeft="196,182" />
         <NodeLayout
           Size="261,42"
           Id="Package\Extract Ticket Booking Data to Staging"
-          TopLeft="171,394" />
+          TopLeft="169,414" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="306,126">
+          TopLeft="304,146">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2860,7 +2860,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="305,48">
+          TopLeft="303,68">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2882,7 +2882,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="306.75,204">
+          TopLeft="304.75,224">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2904,7 +2904,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="304,278">
+          TopLeft="302,298">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2926,7 +2926,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="301.5,356">
+          TopLeft="299.5,376">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3096,25 +3096,25 @@
         <NodeLayout
           Size="217,42"
           Id="Package\Extract AirLines Data to Staging\Load data to AirLiens Staging"
-          TopLeft="210,161" />
+          TopLeft="209,151" />
         <NodeLayout
           Size="220,42"
           Id="Package\Extract AirLines Data to Staging\Excel Source fro AirLines Data"
           TopLeft="207,37" />
         <EdgeLayout
           Id="Package\Extract AirLines Data to Staging.Paths[Excel Source Output]"
-          TopLeft="317.75,79">
+          TopLeft="317.25,79">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,82"
+              EndConnector="0,72"
               Start="0,0"
-              End="0,74.5">
+              End="0,64.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,74.5" />
+                    End="0,64.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
