@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{5DB59E66-E3FB-42B4-9F9A-71244F3E71A1}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{DE0CDE2E-BCA9-4DCB-A16C-972333815775}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -54,173 +54,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Transform and Load Air Routes Data\OLE DB Command"
-              componentClassID="Microsoft.OLEDBCommand"
-              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
-              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
-              name="OLE DB Command"
-              usesDispositions="true"
-              version="2">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec dbo.UpdateDimAirRoutes ?, ?, ?, ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Transform and Load Air Routes Data\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input]"
-                  errorOrTruncationOperation="Command Execution"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Command Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].Columns[RouteId]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="RouteId"
-                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@AirRouteId]"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteId]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].Columns[depAirport]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="depAirport"
-                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@depAirport]"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[depAirport]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].Columns[arrAirport]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="arrAirport"
-                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@arrAirport]"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrAirport]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].Columns[traAirport]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="traAirport"
-                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@traAirport]"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[traAirport]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@AirRouteId]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="@AirRouteId">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@depAirport]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="@depAirport">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@arrAirport]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="@arrAirport">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@traAirport]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="@traAirport">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Transform and Load Air Routes Data\OLE DB Command.Outputs[OLE DB Command Output]"
-                  exclusionGroup="1"
-                  name="OLE DB Command Output"
-                  synchronousInputId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transform and Load Air Routes Data\OLE DB Command.Outputs[OLE DB Command Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Command Error Output"
-                  synchronousInputId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Transform and Load Air Routes Data\OLE DB Source"
+              refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
               description="OLE DB Source"
-              name="OLE DB Source"
+              name="Extract Air Routes from Staging"
               usesDispositions="true"
               version="7">
               <properties>
@@ -265,7 +103,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Transform and Load Air Routes Data\OLE DB Source.Connections[OleDbConnection]"
+                  refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_Stagging_DB]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_Stagging_DB]"
                   description="The OLE DB runtime connection used to access the database."
@@ -273,76 +111,76 @@
               </connections>
               <outputs>
                 <output
-                  refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output]"
+                  refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output]"
                   name="OLE DB Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteId]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[RouteId]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RouteId]"
+                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].ExternalColumns[RouteId]"
                       length="50"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[RouteId]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[RouteId]"
                       name="RouteId"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[depAirport]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[depAirport]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[depAirport]"
+                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].ExternalColumns[depAirport]"
                       length="50"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[depAirport]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[depAirport]"
                       name="depAirport"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrAirport]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[arrAirport]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrAirport]"
+                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].ExternalColumns[arrAirport]"
                       length="50"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrAirport]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[arrAirport]"
                       name="arrAirport"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[traAirport]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[traAirport]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[traAirport]"
+                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].ExternalColumns[traAirport]"
                       length="50"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].Columns[traAirport]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[traAirport]"
                       name="traAirport"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RouteId]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].ExternalColumns[RouteId]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="RouteId" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[depAirport]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].ExternalColumns[depAirport]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="depAirport" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[arrAirport]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].ExternalColumns[arrAirport]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="arrAirport" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[traAirport]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].ExternalColumns[traAirport]"
                       codePage="1252"
                       dataType="str"
                       length="50"
@@ -350,48 +188,210 @@
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output]"
                   isErrorOut="true"
                   name="OLE DB Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RouteId]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[RouteId]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[RouteId]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[RouteId]"
                       name="RouteId" />
                     <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[depAirport]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[depAirport]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[depAirport]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[depAirport]"
                       name="depAirport" />
                     <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrAirport]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[arrAirport]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrAirport]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[arrAirport]"
                       name="arrAirport" />
                     <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[traAirport]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[traAirport]"
                       codePage="1252"
                       dataType="str"
                       length="50"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[traAirport]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[traAirport]"
                       name="traAirport" />
                     <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Load data to Air Routes Dimension"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec dbo.UpdateDimAirRoutes ?, ?, ?, ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].Columns[RouteId]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="RouteId"
+                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].ExternalColumns[@AirRouteId]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[RouteId]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].Columns[depAirport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="depAirport"
+                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].ExternalColumns[@depAirport]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[depAirport]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].Columns[arrAirport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="arrAirport"
+                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].ExternalColumns[@arrAirport]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[arrAirport]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].Columns[traAirport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="traAirport"
+                      externalMetadataColumnId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].ExternalColumns[@traAirport]"
+                      lineageId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output].Columns[traAirport]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].ExternalColumns[@AirRouteId]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@AirRouteId">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].ExternalColumns[@depAirport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@depAirport">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].ExternalColumns[@arrAirport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@arrAirport">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input].ExternalColumns[@traAirport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@traAirport">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -403,9 +403,9 @@
           <paths>
             <path
               refId="Package\Transform and Load Air Routes Data.Paths[OLE DB Source Output]"
-              endId="Package\Transform and Load Air Routes Data\OLE DB Command.Inputs[OLE DB Command Input]"
+              endId="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension.Inputs[OLE DB Command Input]"
               name="OLE DB Source Output"
-              startId="Package\Transform and Load Air Routes Data\OLE DB Source.Outputs[OLE DB Source Output]" />
+              startId="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1592,11 +1592,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Transform and Load AirLines Data\Insert Destination"
+              refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="Insert Destination"
+              name="Load data to Air Lines Dimenstion"
               usesDispositions="true"
               version="4">
               <properties>
@@ -1649,7 +1649,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Transform and Load AirLines Data\Insert Destination.Connections[OleDbConnection]"
+                  refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
                   description="The OLE DB runtime connection used to access the database."
@@ -1657,149 +1657,149 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[AirLineId]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].Columns[AirLineId]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="AirLineId"
-                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Alternate_AirLineId]"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[Alternate_AirLineId]"
                       lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineId]" />
                     <inputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[ComanyName]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].Columns[ComanyName]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="ComanyName"
-                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ComanyName]"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[ComanyName]"
                       lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[ComanyName]" />
                     <inputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[Country]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].Columns[Country]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Country"
-                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
                       lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Country]" />
                     <inputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[HeadOffice]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].Columns[HeadOffice]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="HeadOffice"
-                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadOffice]"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[HeadOffice]"
                       lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[HeadOffice]" />
                     <inputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[AirLineRatingStars]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].Columns[AirLineRatingStars]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="AirLineRatingStars"
-                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AirLineRatingStars]"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[AirLineRatingStars]"
                       lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[AirLineRatingStars]" />
                     <inputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[Email]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].Columns[Email]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="70"
                       cachedName="Email"
-                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
                       lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Email]" />
                     <inputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[Phone]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].Columns[Phone]"
                       cachedCodepage="1252"
                       cachedDataType="str"
                       cachedLength="50"
                       cachedName="Phone"
-                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
                       lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[Phone]" />
                     <inputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[modifiedDate]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].Columns[modifiedDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="modifiedDate"
-                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[srcmodifiedDate]"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[srcmodifiedDate]"
                       lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[modifiedDate]" />
                     <inputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[InsertDate]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].Columns[InsertDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="InsertDate"
-                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[insertDate]"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[insertDate]"
                       lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[InsertDate]" />
                     <inputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="ModifiedDate"
-                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[modifiedDate]"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[modifiedDate]"
                       lineageId="Package\Transform and Load AirLines Data\Union All.Outputs[Union All Output 1].Columns[ModifiedDate]" />
                     <inputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].Columns[StartDate]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].Columns[StartDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="StartDate"
-                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      externalMetadataColumnId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
                       lineageId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Output].Columns[StartDate]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Airlines_SK]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[Airlines_SK]"
                       dataType="i4"
                       name="Airlines_SK" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Alternate_AirLineId]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[Alternate_AirLineId]"
                       dataType="wstr"
                       length="255"
                       name="Alternate_AirLineId" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[ComanyName]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[ComanyName]"
                       dataType="wstr"
                       length="255"
                       name="ComanyName" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
                       dataType="wstr"
                       length="255"
                       name="Country" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[HeadOffice]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[HeadOffice]"
                       dataType="wstr"
                       length="255"
                       name="HeadOffice" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[AirLineRatingStars]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[AirLineRatingStars]"
                       dataType="wstr"
                       length="255"
                       name="AirLineRatingStars" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
                       codePage="1252"
                       dataType="str"
                       length="70"
                       name="Email" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
                       codePage="1252"
                       dataType="str"
                       length="50"
                       name="Phone" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[srcmodifiedDate]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[srcmodifiedDate]"
                       dataType="dbTimeStamp"
                       name="srcmodifiedDate" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[insertDate]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[insertDate]"
                       dataType="dbTimeStamp"
                       name="insertDate" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[modifiedDate]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[modifiedDate]"
                       dataType="dbTimeStamp"
                       name="modifiedDate" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[StartDate]"
                       dataType="dbTimeStamp"
                       name="StartDate" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input].ExternalColumns[EndDate]"
                       dataType="dbTimeStamp"
                       name="EndDate" />
                   </externalMetadataColumns>
@@ -1807,22 +1807,22 @@
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Transform and Load AirLines Data\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Transform and Load AirLines Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Transform and Load AirLines Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Transform and Load AirLines Data\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2906,7 +2906,7 @@
               startId="Package\Transform and Load AirLines Data\Derived Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\Transform and Load AirLines Data.Paths[Derived Column Output2]"
-              endId="Package\Transform and Load AirLines Data\Insert Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Transform and Load AirLines Data\Derived Column 1.Outputs[Derived Column Output]" />
             <path
@@ -3750,6 +3750,141 @@
               </outputs>
             </component>
             <component
+              refId="Package\Transform and Load Flight Data\Load data to Flight Dimension"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Load data to Flight Dimension"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec dbo.UpdateDimFlights ?, ?, ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input].Columns[CraftTypeCode]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CraftTypeCode"
+                      externalMetadataColumnId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input].ExternalColumns[@CraftTypeCode]"
+                      lineageId="Package\Transform and Load Flight Data\Merge Join.Outputs[Merge Join Output].Columns[CraftTypeCode]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input].Columns[Airlines_SK]"
+                      cachedDataType="i4"
+                      cachedName="Airlines_SK"
+                      externalMetadataColumnId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input].ExternalColumns[@AirLineKey]"
+                      lineageId="Package\Transform and Load Flight Data\Merge Join.Outputs[Merge Join Output].Columns[Airlines_SK]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input].Columns[FlightNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FlightNumber"
+                      externalMetadataColumnId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input].ExternalColumns[@FlightNumber]"
+                      lineageId="Package\Transform and Load Flight Data\Merge Join.Outputs[Merge Join Output].Columns[FlightNumber]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input].ExternalColumns[@CraftTypeCode]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="@CraftTypeCode">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input].ExternalColumns[@AirLineKey]"
+                      dataType="i4"
+                      name="@AirLineKey">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input].ExternalColumns[@FlightNumber]"
+                      dataType="wstr"
+                      length="50"
+                      name="@FlightNumber">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Transform and Load Flight Data\Merge Join"
               componentClassID="Microsoft.MergeJoin"
               contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
@@ -3890,141 +4025,6 @@
                           name="InputColumnID">#{Package\Transform and Load Flight Data\Merge Join.Inputs[Merge Join Right Input].Columns[Airlines_SK]}</property>
                       </properties>
                     </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Transform and Load Flight Data\OLE DB Command"
-              componentClassID="Microsoft.OLEDBCommand"
-              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
-              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
-              name="OLE DB Command"
-              usesDispositions="true"
-              version="2">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  expressionType="Notify"
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec dbo.UpdateDimFlights ?, ?, ?</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Transform and Load Flight Data\OLE DB Command.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input]"
-                  errorOrTruncationOperation="Command Execution"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Command Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input].Columns[CraftTypeCode]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="CraftTypeCode"
-                      externalMetadataColumnId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@CraftTypeCode]"
-                      lineageId="Package\Transform and Load Flight Data\Merge Join.Outputs[Merge Join Output].Columns[CraftTypeCode]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input].Columns[Airlines_SK]"
-                      cachedDataType="i4"
-                      cachedName="Airlines_SK"
-                      externalMetadataColumnId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@AirLineKey]"
-                      lineageId="Package\Transform and Load Flight Data\Merge Join.Outputs[Merge Join Output].Columns[Airlines_SK]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input].Columns[FlightNumber]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="FlightNumber"
-                      externalMetadataColumnId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@FlightNumber]"
-                      lineageId="Package\Transform and Load Flight Data\Merge Join.Outputs[Merge Join Output].Columns[FlightNumber]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@CraftTypeCode]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      name="@CraftTypeCode">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@AirLineKey]"
-                      dataType="i4"
-                      name="@AirLineKey">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">81</property>
-                      </properties>
-                    </externalMetadataColumn>
-                    <externalMetadataColumn
-                      refId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@FlightNumber]"
-                      dataType="wstr"
-                      length="50"
-                      name="@FlightNumber">
-                      <properties>
-                        <property
-                          dataType="System.Int32"
-                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
-                          name="DBParamInfoFlags">65</property>
-                      </properties>
-                    </externalMetadataColumn>
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Transform and Load Flight Data\OLE DB Command.Outputs[OLE DB Command Output]"
-                  exclusionGroup="1"
-                  name="OLE DB Command Output"
-                  synchronousInputId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Transform and Load Flight Data\OLE DB Command.Outputs[OLE DB Command Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Command Error Output"
-                  synchronousInputId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Transform and Load Flight Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Transform and Load Flight Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Transform and Load Flight Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Transform and Load Flight Data\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -4604,7 +4604,7 @@
           <paths>
             <path
               refId="Package\Transform and Load Flight Data.Paths[Merge Join Output]"
-              endId="Package\Transform and Load Flight Data\OLE DB Command.Inputs[OLE DB Command Input]"
+              endId="Package\Transform and Load Flight Data\Load data to Flight Dimension.Inputs[OLE DB Command Input]"
               name="Merge Join Output"
               startId="Package\Transform and Load Flight Data\Merge Join.Outputs[Merge Join Output]" />
             <path
@@ -5973,11 +5973,11 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Transform and Load Ticket Bookings\OLE DB Destination"
+              refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="OLE DB Destination"
+              name="Load data to Fact Ticket Bookings"
               usesDispositions="true"
               version="4">
               <properties>
@@ -6030,7 +6030,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Connections[OleDbConnection]"
+                  refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
                   description="The OLE DB runtime connection used to access the database."
@@ -6038,141 +6038,141 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InitialPrice]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[InitialPrice]"
                       cachedDataType="r8"
                       cachedName="InitialPrice"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InitialPrice]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[InitialPrice]"
                       lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[InitialPrice]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[paid]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[paid]"
                       cachedDataType="r8"
                       cachedName="paid"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[paid]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[paid]"
                       lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[paid]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ArrivalDateKey]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[ArrivalDateKey]"
                       cachedDataType="i4"
                       cachedName="ArrivalDateKey"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrivalDateKey]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[arrivalDateKey]"
                       lineageId="Package\Transform and Load Ticket Bookings\Arrival Date Look Up.Outputs[Lookup Match Output].Columns[ArrivalDateKey]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DepartureDateKey]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[DepartureDateKey]"
                       cachedDataType="i4"
                       cachedName="DepartureDateKey"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[departureDateKey]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[departureDateKey]"
                       lineageId="Package\Transform and Load Ticket Bookings\Departure Date LookUp.Outputs[Lookup Match Output].Columns[DepartureDateKey]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[BookedDateKey]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[BookedDateKey]"
                       cachedDataType="i4"
                       cachedName="BookedDateKey"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bookedDateKey]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookedDateKey]"
                       lineageId="Package\Transform and Load Ticket Bookings\Booked Date Look Up.Outputs[Lookup Match Output].Columns[BookedDateKey]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="ModifiedDate"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
                       lineageId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Output].Columns[ModifiedDate]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[ID]"
                       cachedDataType="i4"
                       cachedName="ID"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bookingID]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookingID]"
                       lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[ID]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Flight_SK]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[Flight_SK]"
                       cachedDataType="i4"
                       cachedName="Flight_SK"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[flight_Key]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[flight_Key]"
                       lineageId="Package\Transform and Load Ticket Bookings\Flight LookUp.Outputs[Lookup Match Output].Columns[Flight_SK]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CabinClass_SK]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[CabinClass_SK]"
                       cachedDataType="i4"
                       cachedName="CabinClass_SK"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cabinClassKey]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[cabinClassKey]"
                       lineageId="Package\Transform and Load Ticket Bookings\Cabin Class Look Up.Outputs[Lookup Match Output].Columns[CabinClass_SK]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[dateDifference]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[dateDifference]"
                       cachedDataType="i4"
                       cachedName="dateDifference"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bookedBeforeDays]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookedBeforeDays]"
                       lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[dateDifference]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AirRoute_SK]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[AirRoute_SK]"
                       cachedDataType="i4"
                       cachedName="AirRoute_SK"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[airRouteKey]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[airRouteKey]"
                       lineageId="Package\Transform and Load Ticket Bookings\Air Route Look Up.Outputs[Lookup Match Output].Columns[AirRoute_SK]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InsertedDATE]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[InsertedDATE]"
                       cachedDataType="dbTimeStamp"
                       cachedName="InsertedDATE"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
                       lineageId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Output].Columns[InsertedDATE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bookingID]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookingID]"
                       dataType="i4"
                       name="bookingID" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[flight_Key]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[flight_Key]"
                       dataType="i4"
                       name="flight_Key" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cabinClassKey]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[cabinClassKey]"
                       dataType="i4"
                       name="cabinClassKey" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[departureDateKey]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[departureDateKey]"
                       dataType="i4"
                       name="departureDateKey" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrivalDateKey]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[arrivalDateKey]"
                       dataType="i4"
                       name="arrivalDateKey" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bookedDateKey]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookedDateKey]"
                       dataType="i4"
                       name="bookedDateKey" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[bookedBeforeDays]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookedBeforeDays]"
                       dataType="i4"
                       name="bookedBeforeDays" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[airRouteKey]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[airRouteKey]"
                       dataType="i4"
                       name="airRouteKey" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InitialPrice]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[InitialPrice]"
                       dataType="r8"
                       name="InitialPrice" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[paid]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[paid]"
                       dataType="r8"
                       name="paid" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[discount]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[discount]"
                       dataType="r8"
                       name="discount" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[discountRate]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[discountRate]"
                       dataType="r8"
                       name="discountRate" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
                       dataType="dbTimeStamp"
                       name="InsertDate" />
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
                       dataType="dbTimeStamp"
                       name="ModifiedDate" />
                   </externalMetadataColumns>
@@ -6180,22 +6180,22 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -6207,7 +6207,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
           <paths>
             <path
               refId="Package\Transform and Load Ticket Bookings.Paths[Derived Column Output]"
-              endId="Package\Transform and Load Ticket Bookings\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              endId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Output]" />
             <path
@@ -6413,27 +6413,27 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="150,42"
-          Id="Package\Transform and Load Air Routes Data\OLE DB Source"
+          Size="227,42"
+          Id="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging"
           TopLeft="236.5,26.5" />
         <NodeLayout
-          Size="166,42"
-          Id="Package\Transform and Load Air Routes Data\OLE DB Command"
-          TopLeft="227,149" />
+          Size="242,42"
+          Id="Package\Transform and Load Air Routes Data\Load data to Air Routes Dimension"
+          TopLeft="232,118" />
         <EdgeLayout
           Id="Package\Transform and Load Air Routes Data.Paths[OLE DB Source Output]"
-          TopLeft="310.75,68.5">
+          TopLeft="351.5,68.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,80.5"
+              EndConnector="0,49.5"
               Start="0,0"
-              End="0,73">
+              End="0,42">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,73" />
+                    End="0,42" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -6446,7 +6446,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Air Routes Data\OLE DB Source">
+    design-time-name="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -6466,7 +6466,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
         <NodeLayout
           Size="163,42"
           Id="Package\Transform and Load AirLines Data\Derived Column 1"
-          TopLeft="364.5,821.5" />
+          TopLeft="363.5,820.5" />
         <NodeLayout
           Size="130,42"
           Id="Package\Transform and Load AirLines Data\Merge Join"
@@ -6476,9 +6476,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
           Id="Package\Transform and Load AirLines Data\Air Lines Sort"
           TopLeft="153,107.5" />
         <NodeLayout
-          Size="163,42"
-          Id="Package\Transform and Load AirLines Data\Insert Destination"
-          TopLeft="364.5,923.5" />
+          Size="238,42"
+          Id="Package\Transform and Load AirLines Data\Load data to Air Lines Dimenstion"
+          TopLeft="318.5,920.5" />
         <NodeLayout
           Size="154,42"
           Id="Package\Transform and Load AirLines Data\Derived Column"
@@ -6517,26 +6517,24 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
           TopLeft="287.5,311.5" />
         <EdgeLayout
           Id="Package\Transform and Load AirLines Data.Paths[Derived Column Output2]"
-          TopLeft="446,863.5">
+          TopLeft="441.25,862.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,58"
               Start="0,0"
-              End="0,52.5">
+              End="0,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6558,9 +6556,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6582,9 +6578,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6625,26 +6619,24 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transform and Load AirLines Data.Paths[Union All Output 1]"
-          TopLeft="446,761.5">
+          TopLeft="445.5,761.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,60"
+              EndConnector="0,59"
               Start="0,0"
-              End="0,52.5">
+              End="0,51.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,52.5" />
+                    End="0,51.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6678,9 +6670,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6714,9 +6704,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6738,9 +6726,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6774,9 +6760,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6810,9 +6794,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6870,9 +6852,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7039,7 +7019,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
     design-time-name="Package\Transform and Load Cabin Class Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="172,42"
           Id="Package\Transform and Load Cabin Class Data\Load dimCabinClass"
@@ -7067,9 +7047,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7094,9 +7072,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="166,42"
-          Id="Package\Transform and Load Flight Data\OLE DB Command"
-          TopLeft="236,304" />
+          Size="220,42"
+          Id="Package\Transform and Load Flight Data\Load data to Flight Dimension"
+          TopLeft="208,306" />
         <NodeLayout
           Size="130,42"
           Id="Package\Transform and Load Flight Data\Merge Join"
@@ -7231,18 +7209,18 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Transform and Load Flight Data.Paths[Merge Join Output]"
-          TopLeft="319,262">
+          TopLeft="318.5,262">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,42"
+              EndConnector="0,44"
               Start="0,0"
-              End="0,34.5">
+              End="0,36.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,34.5" />
+                    End="0,36.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7484,23 +7462,23 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <NodeLayout
-          Size="171,42"
-          Id="Package\Transform and Load Ticket Bookings\OLE DB Destination"
-          TopLeft="248,666" />
+          Size="238,42"
+          Id="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings"
+          TopLeft="217,663" />
         <EdgeLayout
           Id="Package\Transform and Load Ticket Bookings.Paths[Derived Column Output]"
-          TopLeft="336.5,626">
+          TopLeft="337.75,626">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40"
+              EndConnector="0,37"
               Start="0,0"
-              End="0,32.5">
+              End="0,29.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5" />
+                    End="0,29.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7664,7 +7642,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Ticket Bookings\OLE DB Destination">
+    design-time-name="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
