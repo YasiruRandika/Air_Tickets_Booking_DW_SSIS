@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="11"
-  DTS:VersionGUID="{B718251E-6A38-4EEF-8B38-D74FAC1C2D34}">
+  DTS:VersionBuild="20"
+  DTS:VersionGUID="{A0AD14C4-D467-4F6F-A133-5F18E4EAD86E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -61,7 +61,7 @@
       DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\yasir\OneDrive\SLIIT\Year 3\Semester 01\DWBI\Assignment 01\Source Data CSV and Text\AirLines.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\yasir\OneDrive\SLIIT\Year 3\Semester 01\DWBI\Assignment 01\Source Data CSV and Text\AirLines.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -1709,6 +1709,89 @@
           version="1">
           <components>
             <component
+              refId="Package\Extract Flight Data to Staging\Flight Number Conversion"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Flight Number Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract Flight Data to Staging\Flight Number Conversion.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Flight Data to Staging\Flight Number Conversion.Inputs[Derived Column Input].Columns[FlightNumber]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FlightNumber"
+                      lineageId="Package\Extract Flight Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightNumber]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Flight Data to Staging\Flight Number Conversion.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Extract Flight Data to Staging\Flight Number Conversion.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Flight Data to Staging\Flight Number Conversion.Outputs[Derived Column Output].Columns[FlightNumberDerived]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Extract Flight Data to Staging\Flight Number Conversion.Outputs[Derived Column Output].Columns[FlightNumberDerived]"
+                      name="FlightNumberDerived"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Extract Flight Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightNumber]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">FlightNumber</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract Flight Data to Staging\Flight Number Conversion.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Extract Flight Data to Staging\Flight Number Conversion.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Flight Data to Staging\Flight Number Conversion.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Flight Data to Staging\Flight Number Conversion.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Flight Data to Staging\Flight Number Conversion.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Flight Data to Staging\Flight Number Conversion.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
               refId="Package\Extract Flight Data to Staging\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
@@ -1781,14 +1864,6 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Extract Flight Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FlightNumber]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="FlightNumber"
-                      externalMetadataColumnId="Package\Extract Flight Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlightNumber]"
-                      lineageId="Package\Extract Flight Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[FlightNumber]" />
-                    <inputColumn
                       refId="Package\Extract Flight Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CraftTypeCode]"
                       cachedCodepage="1252"
                       cachedDataType="str"
@@ -1804,13 +1879,19 @@
                       cachedName="AirLine_CompanyID"
                       externalMetadataColumnId="Package\Extract Flight Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AirLine_CompanyID]"
                       lineageId="Package\Extract Flight Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[AirLine_CompanyID]" />
+                    <inputColumn
+                      refId="Package\Extract Flight Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FlightNumberDerived]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="FlightNumberDerived"
+                      externalMetadataColumnId="Package\Extract Flight Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlightNumber]"
+                      lineageId="Package\Extract Flight Data to Staging\Flight Number Conversion.Outputs[Derived Column Output].Columns[FlightNumberDerived]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Extract Flight Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FlightNumber]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="FlightNumber" />
                     <externalMetadataColumn
@@ -2016,8 +2097,13 @@
           </components>
           <paths>
             <path
-              refId="Package\Extract Flight Data to Staging.Paths[OLE DB Source Output]"
+              refId="Package\Extract Flight Data to Staging.Paths[Derived Column Output]"
               endId="Package\Extract Flight Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Extract Flight Data to Staging\Flight Number Conversion.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Extract Flight Data to Staging.Paths[OLE DB Source Output]"
+              endId="Package\Extract Flight Data to Staging\Flight Number Conversion.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\Extract Flight Data to Staging\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
@@ -2068,7 +2154,7 @@
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{63F86F48-A3D0-4DA4-AE5C-72283C6E0897}"
-                  SQLTask:SqlStatementSource="truncate table stg TicketBookings" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="truncate table stgTicketBookings" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
           </DTS:Executables>
@@ -2078,6 +2164,89 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Cabin Class Type Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Inputs[Derived Column Input].Columns[cabinClass]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="cabinClass"
+                      lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[cabinClass]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Outputs[Derived Column Output].Columns[DerivedCabinClass]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Outputs[Derived Column Output].Columns[DerivedCabinClass]"
+                      name="DerivedCabinClass"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[cabinClass]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">cabinClass</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination"
               componentClassID="Microsoft.OLEDBDestination"
@@ -2157,13 +2326,6 @@
                       externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
                       lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID]" />
                     <inputColumn
-                      refId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[flightNumber]"
-                      cachedDataType="wstr"
-                      cachedLength="50"
-                      cachedName="flightNumber"
-                      externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[flightNumber]"
-                      lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[flightNumber]" />
-                    <inputColumn
                       refId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[departureDate]"
                       cachedDataType="dbTimeStamp"
                       cachedName="departureDate"
@@ -2175,14 +2337,6 @@
                       cachedName="arrivalDate"
                       externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[arrivalDate]"
                       lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[arrivalDate]" />
-                    <inputColumn
-                      refId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[cabinClass]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="cabinClass"
-                      externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cabinClass]"
-                      lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[cabinClass]" />
                     <inputColumn
                       refId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[bookedDate]"
                       cachedDataType="dbTimeStamp"
@@ -2196,14 +2350,6 @@
                       externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[dateDifference]"
                       lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[dateDifference]" />
                     <inputColumn
-                      refId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[airRouteID]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="50"
-                      cachedName="airRouteID"
-                      externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[airRouteID]"
-                      lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[airRouteID]" />
-                    <inputColumn
                       refId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[InitialPrice]"
                       cachedDataType="r8"
                       cachedName="InitialPrice"
@@ -2215,6 +2361,28 @@
                       cachedName="paid"
                       externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[paid]"
                       lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[paid]" />
+                    <inputColumn
+                      refId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DerivedCabinClass]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="DerivedCabinClass"
+                      externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cabinClass]"
+                      lineageId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Outputs[Derived Column Output].Columns[DerivedCabinClass]" />
+                    <inputColumn
+                      refId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[airRouteID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="airRouteID"
+                      externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[airRouteID]"
+                      lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[airRouteID]" />
+                    <inputColumn
+                      refId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[flightNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="flightNumber"
+                      externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[flightNumber]"
+                      lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[flightNumber]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2237,8 +2405,7 @@
                       name="arrivalDate" />
                     <externalMetadataColumn
                       refId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[cabinClass]"
-                      codePage="1252"
-                      dataType="str"
+                      dataType="wstr"
                       length="50"
                       name="cabinClass" />
                     <externalMetadataColumn
@@ -2390,17 +2557,6 @@
                       name="arrivalDate"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[cabinClass]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cabinClass]"
-                      length="50"
-                      lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[cabinClass]"
-                      name="cabinClass"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[bookedDate]"
                       dataType="dbTimeStamp"
                       errorOrTruncationOperation="Conversion"
@@ -2446,6 +2602,17 @@
                       externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[paid]"
                       lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[paid]"
                       name="paid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[cabinClass]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cabinClass]"
+                      length="50"
+                      lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output].Columns[cabinClass]"
+                      name="cabinClass"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -2524,13 +2691,6 @@
                       lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[arrivalDate]"
                       name="arrivalDate" />
                     <outputColumn
-                      refId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cabinClass]"
-                      codePage="1252"
-                      dataType="str"
-                      length="50"
-                      lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cabinClass]"
-                      name="cabinClass" />
-                    <outputColumn
                       refId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bookedDate]"
                       dataType="dbTimeStamp"
                       lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[bookedDate]"
@@ -2569,6 +2729,13 @@
                       lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cabinClass]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cabinClass]"
+                      name="cabinClass" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -2577,8 +2744,13 @@
           </components>
           <paths>
             <path
-              refId="Package\Extract Ticket Booking Data to Staging.Paths[OLE DB Source Output]"
+              refId="Package\Extract Ticket Booking Data to Staging.Paths[Derived Column Output]"
               endId="Package\Extract Ticket Booking Data to Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Extract Ticket Booking Data to Staging.Paths[OLE DB Source Output]"
+              endId="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion.Inputs[Derived Column Input]"
               name="OLE DB Source Output"
               startId="Package\Extract Ticket Booking Data to Staging\OLE DB Source.Outputs[OLE DB Source Output]" />
           </paths>
@@ -2641,17 +2813,29 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="218,42"
-          Id="Package\Extract Flight Data to Staging"
-          TopLeft="198,162" />
+          Size="215,42"
+          Id="Package\Extract Air Routes to Staging"
+          TopLeft="194,314" />
+        <NodeLayout
+          Size="268,42"
+          Id="Package\Extract AirLines Contact Data to Staging"
+          TopLeft="171,84" />
         <NodeLayout
           Size="228,42"
           Id="Package\Extract AirLines Data to Staging"
           TopLeft="191,6" />
         <NodeLayout
-          Size="268,42"
-          Id="Package\Extract AirLines Contact Data to Staging"
-          TopLeft="171,84" />
+          Size="245,42"
+          Id="Package\Extract Cabin Class Data to Staging"
+          TopLeft="184,236" />
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Extract Flight Data to Staging"
+          TopLeft="198,162" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\Extract Ticket Booking Data to Staging"
+          TopLeft="171,394" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="306,126">
@@ -2696,10 +2880,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="245,42"
-          Id="Package\Extract Cabin Class Data to Staging"
-          TopLeft="184,236" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="306.75,204">
@@ -2722,10 +2902,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="215,42"
-          Id="Package\Extract Air Routes to Staging"
-          TopLeft="194,314" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="304,278">
@@ -2748,24 +2924,20 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="261,42"
-          Id="Package\Extract Ticket Booking Data to Staging"
-          TopLeft="170,395" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="301,356">
+          TopLeft="301.5,356">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,39"
+              EndConnector="0,38"
               Start="0,0"
-              End="0,31.5">
+              End="0,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,31.5" />
+                    End="0,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2778,288 +2950,10 @@
     </LayoutInfo>
   </Package>
   <TaskHost
-    design-time-name="Package\Extract Flight Data to Staging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Extract Flight Data to Staging\OLE DB Source"
-          TopLeft="221,18" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Extract Flight Data to Staging\OLE DB Destination"
-          TopLeft="212,158" />
-        <EdgeLayout
-          Id="Package\Extract Flight Data to Staging.Paths[OLE DB Source Output]"
-          TopLeft="296.75,60">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,98"
-              Start="0,0"
-              End="0,90.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,90.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract Flight Data to Staging\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract Flight Data to Staging\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package\Extract Flight Data to Staging.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Extract Flight Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
-          TopLeft="177,72" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <TaskHost
-    design-time-name="Package\Extract AirLines Data to Staging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="139,42"
-          Id="Package\Extract AirLines Data to Staging\Excel Source"
-          TopLeft="207,37" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Extract AirLines Data to Staging\OLE DB Destination"
-          TopLeft="188,163" />
-        <EdgeLayout
-          Id="Package\Extract AirLines Data to Staging.Paths[Excel Source Output]"
-          TopLeft="275,79">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,84"
-              Start="0,0"
-              End="0,76.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,76.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract AirLines Data to Staging\Excel Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package\Extract AirLines Data to Staging.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Extract AirLines Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
-          TopLeft="177,66" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract AirLines Data to Staging\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Extract AirLines Contact Data to Staging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Extract AirLines Contact Data to Staging\Flat File Source"
-          TopLeft="248,46" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Extract AirLines Contact Data to Staging\OLE DB Destination"
-          TopLeft="234,167" />
-        <EdgeLayout
-          Id="Package\Extract AirLines Contact Data to Staging.Paths[Flat File Source Output]"
-          TopLeft="321.5,88">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,79"
-              Start="0,0"
-              End="0,71.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,71.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract AirLines Contact Data to Staging\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package\Extract AirLines Contact Data to Staging.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Extract AirLines Contact Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
-          TopLeft="213,26" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <TaskHost
-    design-time-name="Package\Extract Cabin Class Data to Staging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Extract Cabin Class Data to Staging\Flat File Source"
-          TopLeft="216,45" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Extract Cabin Class Data to Staging\OLE DB Destination"
-          TopLeft="209,167" />
-        <EdgeLayout
-          Id="Package\Extract Cabin Class Data to Staging.Paths[Flat File Source Output]"
-          TopLeft="293,87">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,80"
-              Start="0,0"
-              End="0,72.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,72.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract Cabin Class Data to Staging\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package\Extract Cabin Class Data to Staging.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Extract Cabin Class Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
-          TopLeft="190,35" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <TaskHost
     design-time-name="Package\Extract Air Routes to Staging">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="150,42"
           Id="Package\Extract Air Routes to Staging\OLE DB Source"
@@ -3087,25 +2981,26 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Extract Air Routes to Staging\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
+  <DtsEventHandler
+    design-time-name="Package\Extract Air Routes to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Extract Air Routes to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
+          TopLeft="230,94" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <PipelineComponentMetadata
     design-time-name="Package\Extract Air Routes to Staging\OLE DB Destination">
     <Properties>
@@ -3119,58 +3014,8 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package\Extract Air Routes to Staging.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Extract Air Routes to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
-          TopLeft="230,94" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
-  <TaskHost
-    design-time-name="Package\Extract Ticket Booking Data to Staging">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Extract Ticket Booking Data to Staging\OLE DB Source"
-          TopLeft="227,39" />
-        <NodeLayout
-          Size="171,42"
-          Id="Package\Extract Ticket Booking Data to Staging\OLE DB Destination"
-          TopLeft="217,158" />
-        <EdgeLayout
-          Id="Package\Extract Ticket Booking Data to Staging.Paths[OLE DB Source Output]"
-          TopLeft="302.25,81">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,77"
-              Start="0,0"
-              End="0,69.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,69.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Extract Ticket Booking Data to Staging\OLE DB Source">
+    design-time-name="Package\Extract Air Routes to Staging\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3182,6 +3027,392 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract AirLines Contact Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Extract AirLines Contact Data to Staging\OLE DB Destination"
+          TopLeft="234,167" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Extract AirLines Contact Data to Staging\Flat File Source"
+          TopLeft="248,46" />
+        <EdgeLayout
+          Id="Package\Extract AirLines Contact Data to Staging.Paths[Flat File Source Output]"
+          TopLeft="321.5,88">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,79"
+              Start="0,0"
+              End="0,71.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Extract AirLines Contact Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Extract AirLines Contact Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
+          TopLeft="213,26" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract AirLines Contact Data to Staging\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract AirLines Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Extract AirLines Data to Staging\OLE DB Destination"
+          TopLeft="188,163" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Extract AirLines Data to Staging\Excel Source"
+          TopLeft="207,37" />
+        <EdgeLayout
+          Id="Package\Extract AirLines Data to Staging.Paths[Excel Source Output]"
+          TopLeft="275,79">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84"
+              Start="0,0"
+              End="0,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Extract AirLines Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Extract AirLines Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
+          TopLeft="177,66" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract AirLines Data to Staging\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract AirLines Data to Staging\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract Cabin Class Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Extract Cabin Class Data to Staging\OLE DB Destination"
+          TopLeft="209,167" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Extract Cabin Class Data to Staging\Flat File Source"
+          TopLeft="216,45" />
+        <EdgeLayout
+          Id="Package\Extract Cabin Class Data to Staging.Paths[Flat File Source Output]"
+          TopLeft="293,87">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,80"
+              Start="0,0"
+              End="0,72.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,72.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Extract Cabin Class Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Extract Cabin Class Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
+          TopLeft="190,35" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Cabin Class Data to Staging\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract Flight Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Extract Flight Data to Staging\OLE DB Source"
+          TopLeft="221,18" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Extract Flight Data to Staging\OLE DB Destination"
+          TopLeft="212,178" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Extract Flight Data to Staging\Flight Number Conversion"
+          TopLeft="194,89" />
+        <EdgeLayout
+          Id="Package\Extract Flight Data to Staging.Paths[OLE DB Source Output]"
+          TopLeft="295.25,60">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Flight Data to Staging.Paths[Derived Column Output]"
+          TopLeft="296,131">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Extract Flight Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Extract Flight Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
+          TopLeft="177,72" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Flight Data to Staging\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Flight Data to Staging\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Extract Ticket Booking Data to Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Extract Ticket Booking Data to Staging\OLE DB Source"
+          TopLeft="200,38" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Extract Ticket Booking Data to Staging\OLE DB Destination"
+          TopLeft="186,201" />
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Extract Ticket Booking Data to Staging\Cabin Class Type Conversion"
+          TopLeft="166,123" />
+        <EdgeLayout
+          Id="Package\Extract Ticket Booking Data to Staging.Paths[OLE DB Source Output]"
+          TopLeft="274,80">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Extract Ticket Booking Data to Staging.Paths[Derived Column Output]"
+          TopLeft="272.25,165">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <DtsEventHandler
+    design-time-name="Package\Extract Ticket Booking Data to Staging.EventHandlers[OnPreExecute]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Extract Ticket Booking Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
+          TopLeft="174,110" />
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
   <PipelineComponentMetadata
     design-time-name="Package\Extract Ticket Booking Data to Staging\OLE DB Destination">
     <Properties>
@@ -3195,17 +3426,18 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <DtsEventHandler
-    design-time-name="Package\Extract Ticket Booking Data to Staging.EventHandlers[OnPreExecute]">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
-        <NodeLayout
-          Size="163,42"
-          Id="Package\Extract Ticket Booking Data to Staging.EventHandlers[OnPreExecute]\Execute SQL Task"
-          TopLeft="174,110" />
-      </GraphLayout>
-    </LayoutInfo>
-  </DtsEventHandler>
+  <PipelineComponentMetadata
+    design-time-name="Package\Extract Ticket Booking Data to Staging\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
