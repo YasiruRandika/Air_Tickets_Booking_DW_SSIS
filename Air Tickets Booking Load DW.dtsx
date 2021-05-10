@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="19"
-  DTS:VersionGUID="{66890F14-AEE2-465E-AC46-DE690C3DBC90}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{B5CEDE5C-D9BF-49D4-881E-110BD57EE355}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -5439,93 +5439,105 @@ where [refTable].[Date] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns"
+              refId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Derived Inserted and Updated Columns"
+              name="Derived Columns for Discount and Discount Rate"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Inputs[Derived Column Input]"
+                  refId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Inputs[Derived Column Input].Columns[InitialPrice]"
+                      cachedDataType="r8"
+                      cachedName="InitialPrice"
+                      lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[InitialPrice]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Inputs[Derived Column Input].Columns[paid]"
+                      cachedDataType="r8"
+                      cachedName="paid"
+                      lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[paid]" />
+                  </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Output]"
+                  refId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Output].Columns[InsertedDATE]"
-                      dataType="dbTimeStamp"
+                      refId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Output].Columns[discount]"
+                      dataType="r8"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Output].Columns[InsertedDATE]"
-                      name="InsertedDATE"
+                      lineageId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Output].Columns[discount]"
+                      name="discount"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[GETDATE]()</property>
+                          name="Expression">#{Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[InitialPrice]} - #{Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[paid]}</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">GETDATE()</property>
+                          name="FriendlyExpression">InitialPrice - paid</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Output].Columns[ModifiedDate]"
-                      dataType="dbTimeStamp"
+                      refId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Output].Columns[discountRate]"
+                      dataType="r8"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Output].Columns[ModifiedDate]"
-                      name="ModifiedDate"
+                      lineageId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Output].Columns[discountRate]"
+                      name="discountRate"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[GETDATE]()</property>
+                          name="Expression">((#{Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[InitialPrice]} - #{Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[paid]}) / #{Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[InitialPrice]}) * 100</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">GETDATE()</property>
+                          name="FriendlyExpression">((InitialPrice - paid) / InitialPrice) * 100</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Error Output]"
+                  refId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -5973,13 +5985,13 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
               </outputs>
             </component>
             <component
-              refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="Load data to Fact Ticket Bookings"
+              refId="Package\Transform and Load Ticket Bookings\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
               usesDispositions="true"
-              version="4">
+              version="2">
               <properties>
                 <property
                   dataType="System.Int32"
@@ -5987,50 +5999,18 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
                   name="CommandTimeout">0</property>
                 <property
                   dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[factTicketBookings]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
                   description="The SQL command to be executed."
+                  expressionType="Notify"
                   name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">exec dbo.UpdateFactTicketBookings ?,?,?,?,?,?,?,?,?,?,?,?</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the column code page to use when code page information is unavailable from the data source."
                   name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Connections[OleDbConnection]"
+                  refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
                   connectionManagerRefId="Package.ConnectionManagers[LocalHost.Air_Tickets_DW]"
                   description="The OLE DB runtime connection used to access the database."
@@ -6038,164 +6018,247 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
+                  refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
-                  name="OLE DB Destination Input">
+                  name="OLE DB Command Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[InitialPrice]"
-                      cachedDataType="r8"
-                      cachedName="InitialPrice"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[InitialPrice]"
-                      lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[InitialPrice]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[paid]"
-                      cachedDataType="r8"
-                      cachedName="paid"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[paid]"
-                      lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[paid]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[ArrivalDateKey]"
-                      cachedDataType="i4"
-                      cachedName="ArrivalDateKey"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[arrivalDateKey]"
-                      lineageId="Package\Transform and Load Ticket Bookings\Arrival Date Look Up.Outputs[Lookup Match Output].Columns[ArrivalDateKey]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[DepartureDateKey]"
-                      cachedDataType="i4"
-                      cachedName="DepartureDateKey"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[departureDateKey]"
-                      lineageId="Package\Transform and Load Ticket Bookings\Departure Date LookUp.Outputs[Lookup Match Output].Columns[DepartureDateKey]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[BookedDateKey]"
-                      cachedDataType="i4"
-                      cachedName="BookedDateKey"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookedDateKey]"
-                      lineageId="Package\Transform and Load Ticket Bookings\Booked Date Look Up.Outputs[Lookup Match Output].Columns[BookedDateKey]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="ModifiedDate"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
-                      lineageId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Output].Columns[ModifiedDate]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[ID]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[ID]"
                       cachedDataType="i4"
                       cachedName="ID"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookingID]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@bookingID]"
                       lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[ID]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[Flight_SK]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[Flight_SK]"
                       cachedDataType="i4"
                       cachedName="Flight_SK"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[flight_Key]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@flight_key]"
                       lineageId="Package\Transform and Load Ticket Bookings\Flight LookUp.Outputs[Lookup Match Output].Columns[Flight_SK]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[CabinClass_SK]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[CabinClass_SK]"
                       cachedDataType="i4"
                       cachedName="CabinClass_SK"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[cabinClassKey]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@cabin_class_key]"
                       lineageId="Package\Transform and Load Ticket Bookings\Cabin Class Look Up.Outputs[Lookup Match Output].Columns[CabinClass_SK]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[dateDifference]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[DepartureDateKey]"
+                      cachedDataType="i4"
+                      cachedName="DepartureDateKey"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@depature_date_key]"
+                      lineageId="Package\Transform and Load Ticket Bookings\Departure Date LookUp.Outputs[Lookup Match Output].Columns[DepartureDateKey]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[ArrivalDateKey]"
+                      cachedDataType="i4"
+                      cachedName="ArrivalDateKey"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@arrival_date_key]"
+                      lineageId="Package\Transform and Load Ticket Bookings\Arrival Date Look Up.Outputs[Lookup Match Output].Columns[ArrivalDateKey]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[BookedDateKey]"
+                      cachedDataType="i4"
+                      cachedName="BookedDateKey"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@booked_date_key]"
+                      lineageId="Package\Transform and Load Ticket Bookings\Booked Date Look Up.Outputs[Lookup Match Output].Columns[BookedDateKey]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[dateDifference]"
                       cachedDataType="i4"
                       cachedName="dateDifference"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookedBeforeDays]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@booked_before_days]"
                       lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[dateDifference]" />
                     <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[AirRoute_SK]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[InitialPrice]"
+                      cachedDataType="r8"
+                      cachedName="InitialPrice"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@initial_price]"
+                      lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[InitialPrice]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[paid]"
+                      cachedDataType="r8"
+                      cachedName="paid"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@paid]"
+                      lineageId="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging.Outputs[OLE DB Source Output].Columns[paid]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[discount]"
+                      cachedDataType="r8"
+                      cachedName="discount"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@discount]"
+                      lineageId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Output].Columns[discount]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[discountRate]"
+                      cachedDataType="r8"
+                      cachedName="discountRate"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@discountRate]"
+                      lineageId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Output].Columns[discountRate]" />
+                    <inputColumn
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].Columns[AirRoute_SK]"
                       cachedDataType="i4"
                       cachedName="AirRoute_SK"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[airRouteKey]"
+                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@air_route_key]"
                       lineageId="Package\Transform and Load Ticket Bookings\Air Route Look Up.Outputs[Lookup Match Output].Columns[AirRoute_SK]" />
-                    <inputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].Columns[InsertedDATE]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="InsertedDATE"
-                      externalMetadataColumnId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
-                      lineageId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Output].Columns[InsertedDATE]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookingID]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@bookingID]"
                       dataType="i4"
-                      name="bookingID" />
+                      name="@bookingID">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[flight_Key]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@flight_key]"
                       dataType="i4"
-                      name="flight_Key" />
+                      name="@flight_key">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[cabinClassKey]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@cabin_class_key]"
                       dataType="i4"
-                      name="cabinClassKey" />
+                      name="@cabin_class_key">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[departureDateKey]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@depature_date_key]"
                       dataType="i4"
-                      name="departureDateKey" />
+                      name="@depature_date_key">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[arrivalDateKey]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@arrival_date_key]"
                       dataType="i4"
-                      name="arrivalDateKey" />
+                      name="@arrival_date_key">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookedDateKey]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@booked_date_key]"
                       dataType="i4"
-                      name="bookedDateKey" />
+                      name="@booked_date_key">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[bookedBeforeDays]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@booked_before_days]"
                       dataType="i4"
-                      name="bookedBeforeDays" />
+                      name="@booked_before_days">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[airRouteKey]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@air_route_key]"
                       dataType="i4"
-                      name="airRouteKey" />
+                      name="@air_route_key">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[InitialPrice]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@initial_price]"
                       dataType="r8"
-                      name="InitialPrice" />
+                      name="@initial_price">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[paid]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@paid]"
                       dataType="r8"
-                      name="paid" />
+                      name="@paid">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[discount]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@discount]"
                       dataType="r8"
-                      name="discount" />
+                      name="@discount">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                     <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[discountRate]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[@discountRate]"
                       dataType="r8"
-                      name="discountRate" />
-                    <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[InsertDate]"
-                      dataType="dbTimeStamp"
-                      name="InsertDate" />
-                    <externalMetadataColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
-                      dataType="dbTimeStamp"
-                      name="ModifiedDate" />
+                      name="@discountRate">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Outputs[OLE DB Command Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input]">
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Transform and Load Ticket Bookings\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Transform and Load Ticket Bookings\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Transform and Load Ticket Bookings\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -6207,9 +6270,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
           <paths>
             <path
               refId="Package\Transform and Load Ticket Bookings.Paths[Derived Column Output]"
-              endId="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings.Inputs[OLE DB Destination Input]"
+              endId="Package\Transform and Load Ticket Bookings\OLE DB Command.Inputs[OLE DB Command Input]"
               name="Derived Column Output"
-              startId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Outputs[Derived Column Output]" />
+              startId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Outputs[Derived Column Output]" />
             <path
               refId="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output]"
               endId="Package\Transform and Load Ticket Bookings\Air Route Look Up.Inputs[Lookup Input]"
@@ -6237,7 +6300,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
               startId="Package\Transform and Load Ticket Bookings\Booked Date Look Up.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output5]"
-              endId="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns.Inputs[Derived Column Input]"
+              endId="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate.Inputs[Derived Column Input]"
               name="Lookup Match Output"
               startId="Package\Transform and Load Ticket Bookings\Flight LookUp.Outputs[Lookup Match Output]" />
             <path
@@ -6312,6 +6375,10 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
           Size="229,42"
           Id="Package\Transform and Load Flight Data"
           TopLeft="215,296" />
+        <NodeLayout
+          Size="251,42"
+          Id="Package\Transform and Load Ticket Bookings"
+          TopLeft="205,392" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="329.25,64">
@@ -6378,10 +6445,6 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="251,42"
-          Id="Package\Transform and Load Ticket Bookings"
-          TopLeft="205,392" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="330,338">
@@ -6411,7 +6474,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
     design-time-name="Package\Transform and Load Air Routes Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="227,42"
           Id="Package\Transform and Load Air Routes Data\Extract Air Routes from Staging"
@@ -6439,7 +6502,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -6534,7 +6599,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6556,7 +6623,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6578,7 +6647,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6636,7 +6707,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6670,7 +6743,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6704,7 +6779,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6726,7 +6803,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6760,7 +6839,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6794,7 +6875,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -6852,7 +6935,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -7019,7 +7104,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
     design-time-name="Package\Transform and Load Cabin Class Data">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="172,42"
           Id="Package\Transform and Load Cabin Class Data\Load dimCabinClass"
@@ -7047,7 +7132,9 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -7072,13 +7159,13 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="220,42"
-          Id="Package\Transform and Load Flight Data\Load data to Flight Dimension"
-          TopLeft="208,306" />
-        <NodeLayout
           Size="130,42"
           Id="Package\Transform and Load Flight Data\Merge Join"
           TopLeft="254,220" />
+        <NodeLayout
+          Size="220,42"
+          Id="Package\Transform and Load Flight Data\Load data to Flight Dimension"
+          TopLeft="208,306" />
         <NodeLayout
           Size="205,42"
           Id="Package\Transform and Load Flight Data\Extract from Flight Staging"
@@ -7264,13 +7351,41 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="273,42"
-          Id="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging"
-          TopLeft="192,32" />
+          Size="143,42"
+          Id="Package\Transform and Load Ticket Bookings\Flight LookUp"
+          TopLeft="262,502" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Transform and Load Ticket Bookings\Arrival Date Look Up"
+          TopLeft="242,276" />
         <NodeLayout
           Size="174,44"
           Id="Package\Transform and Load Ticket Bookings\Cabin Class Look Up"
           TopLeft="243,113" />
+        <NodeLayout
+          Size="308,42"
+          Id="Package\Transform and Load Ticket Bookings\Derived Columns for Discount and Discount Rate"
+          TopLeft="209,636" />
+        <NodeLayout
+          Size="166,42"
+          Id="Package\Transform and Load Ticket Bookings\OLE DB Command"
+          TopLeft="263,668" />
+        <NodeLayout
+          Size="273,42"
+          Id="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging"
+          TopLeft="192,32" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Transform and Load Ticket Bookings\Air Route Look Up"
+          TopLeft="244,195" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Transform and Load Ticket Bookings\Booked Date Look Up"
+          TopLeft="241,428" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Transform and Load Ticket Bookings\Departure Date LookUp"
+          TopLeft="235,353" />
         <EdgeLayout
           Id="Package\Transform and Load Ticket Bookings.Paths[OLE DB Source Output]"
           TopLeft="329.25,74">
@@ -7293,122 +7408,42 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="164,42"
-          Id="Package\Transform and Load Ticket Bookings\Air Route Look Up"
-          TopLeft="244,195" />
         <EdgeLayout
-          Id="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output]"
-          TopLeft="328,157">
+          Id="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output5]"
+          TopLeft="333.5,544">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,38"
+              EndConnector="29.5,92"
               Start="0,0"
-              End="0,30.5">
+              End="29.5,84.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,30.5" />
+                    End="0,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42"
+                    Point2="0,46"
+                    Point3="4,46" />
+                  <mssgle:LineSegment
+                    End="25.5,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.5,46"
+                    Point2="29.5,46"
+                    Point3="29.5,50" />
+                  <mssgle:LineSegment
+                    End="29.5,84.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.4453125,96.3827734375,11.609375"
+              BoundingBox="-33.44138671875,51,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="176,42"
-          Id="Package\Transform and Load Ticket Bookings\Arrival Date Look Up"
-          TopLeft="242,276" />
-        <EdgeLayout
-          Id="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output1]"
-          TopLeft="328,237">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39"
-              Start="0,0"
-              End="0,31.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,9.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="190,42"
-          Id="Package\Transform and Load Ticket Bookings\Departure Date LookUp"
-          TopLeft="235,353" />
-        <EdgeLayout
-          Id="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output2]"
-          TopLeft="330,318">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,35"
-              Start="0,0"
-              End="0,27.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,27.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,7.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="181,42"
-          Id="Package\Transform and Load Ticket Bookings\Booked Date Look Up"
-          TopLeft="241,428" />
-        <EdgeLayout
-          Id="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output3]"
-          TopLeft="330.75,395">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,33"
-              Start="0,0"
-              End="0,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,6.9453125,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="143,42"
-          Id="Package\Transform and Load Ticket Bookings\Flight LookUp"
-          TopLeft="262,502" />
         <EdgeLayout
           Id="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output4]"
           TopLeft="332.5,470">
@@ -7429,56 +7464,126 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,6.4453125,96.3827734375,11.609375"
+              BoundingBox="-80.51173828125,6.4453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="265,42"
-          Id="Package\Transform and Load Ticket Bookings\Derived Inserted and Updated Columns"
-          TopLeft="207,584" />
         <EdgeLayout
-          Id="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output5]"
-          TopLeft="336.5,544">
+          Id="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output3]"
+          TopLeft="330.75,395">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,40"
+              EndConnector="0,33"
               Start="0,0"
-              End="0,32.5">
+              End="0,25.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,32.5" />
+                    End="0,25.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.4453125,96.3827734375,11.609375"
+              BoundingBox="-77.78173828125,6.9453125,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="238,42"
-          Id="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings"
-          TopLeft="217,663" />
         <EdgeLayout
-          Id="Package\Transform and Load Ticket Bookings.Paths[Derived Column Output]"
-          TopLeft="337.75,626">
+          Id="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output2]"
+          TopLeft="330,318">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,37"
+              EndConnector="0,35"
               Start="0,0"
-              End="0,29.5">
+              End="0,27.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.5" />
+                    End="0,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-80.51173828125,7.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output1]"
+          TopLeft="328,237">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39"
+              Start="0,0"
+              End="0,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-80.51173828125,9.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load Ticket Bookings.Paths[Lookup Match Output]"
+          TopLeft="328,157">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38"
+              Start="0,0"
+              End="0,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-80.51173828125,9.4453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and Load Ticket Bookings.Paths[Derived Column Output]"
+          TopLeft="363,678">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="66,11"
+              Start="0,0"
+              End="58.5,11">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7"
+                    Point2="0,11"
+                    Point3="4,11" />
+                  <mssgle:LineSegment
+                    End="58.5,11" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7490,6 +7595,75 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and Load Ticket Bookings\Flight LookUp">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dimFlights]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and Load Ticket Bookings\Arrival Date Look Up">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DimDate]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and Load Ticket Bookings\Cabin Class Look Up">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[dimCabinClass]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Transform and Load Ticket Bookings\Extract Data from Ticket Booking Staging">
     <Properties>
@@ -7504,35 +7678,12 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Ticket Bookings\Cabin Class Look Up">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[dimCabinClass]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Transform and Load Ticket Bookings\Air Route Look Up">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -7542,53 +7693,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Ticket Bookings\Arrival Date Look Up">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimDate]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
-      </Property>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Ticket Bookings\Departure Date LookUp">
-    <Properties>
-      <Property>
-        <Name>OverwriteParamsSQLProp</Name>
-        <Value
-          type="q2:boolean">false</Value>
-      </Property>
-      <Property>
-        <Name>UsedTableName</Name>
-        <Value
-          type="q3:string">[dbo].[DimDate]</Value>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7601,7 +7706,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -7611,7 +7716,7 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -7619,38 +7724,25 @@ where [refTable].[Alternate_FlightNumber] = ?</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Ticket Bookings\Flight LookUp">
+    design-time-name="Package\Transform and Load Ticket Bookings\Departure Date LookUp">
     <Properties>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
         <Value
-          type="q3:string">[dbo].[dimFlights]</Value>
+          type="q3:string">[dbo].[DimDate]</Value>
       </Property>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transform and Load Ticket Bookings\Load data to Fact Ticket Bookings">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
